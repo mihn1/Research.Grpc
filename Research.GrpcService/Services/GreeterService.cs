@@ -15,7 +15,7 @@ namespace Research.GrpcService.Services
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            _logger.LogInformation("{Time} Requested from: {Host}", DateTimeOffset.UtcNow, context.Host);
+            _logger.LogInformation("{Time} Requested from: {Host}", DateTimeOffset.UtcNow, context.GetHttpContext().Connection.RemoteIpAddress);
             _logger.LogInformation("Headers: {Header}", JsonConvert.SerializeObject(context.RequestHeaders));
             return Task.FromResult(new HelloReply
             {
