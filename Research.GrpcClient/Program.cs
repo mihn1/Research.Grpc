@@ -37,7 +37,7 @@ try
     #region SalesData
     var saleClient = new SalesService.SalesServiceClient(channel);
     var serverStream = saleClient.RequestSalesData(new SalesRequest { Filters = "" }
-        //, deadline: DateTime.UtcNow.AddSeconds(60)
+        , deadline: DateTime.UtcNow.AddSeconds(60)
         );
     var resMeta = await serverStream.ResponseHeadersAsync;
     Console.WriteLine(resMeta);
